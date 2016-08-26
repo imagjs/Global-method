@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<imag>
+    <script>
+    <![CDATA[
+        function createButton() {
+            var button = $C('button', {id:'test_button', text:'按钮'});
+            $('test_item1').add(button);
+        }
+        
+        function createButton2() {
+            var button = $C('<button id="test_button">按钮</button>');
+            $('test_item2').add(button);
+        }
+        
+        function testConfirm() {
+            if (confirm('确定?')) {
+            	hint('确定');
+            } else {
+            	hint('取消');
+            }
+        }      
+        
+        function testConfirm2() {
+            if (confirm('确认标题|确定?')) {
+            	hint('确定');
+            } else {
+           		hint('取消');
+            }
+        }
+    ]]>
+    </script>
+   <page>
+       <title>
+           <center>
+               <label>全局方法</label>
+           </center>
+       </title>
+       <content id="test_content" draggable="true">
+          <list type="group">
+	          <item accessory="indicator" onclick="alert($('test_label').text);">
+	              <label id="test_label">根据id获取控件对象</label>
+	          </item>
+	          <item id="test_item1" accessory="indicator" onclick="createButton();">
+	              <label>通过属性键值对创建控件对象</label>
+	          </item>
+	          <item id="test_item2" accessory="indicator" onclick="createButton2();">
+	              <label>通过XML创建控件对象</label>
+	          </item>
+	          <item accessory="indicator" onclick="alert('提示信息');">
+	              <label>提示框</label>
+	          </item>
+	          <item accessory="indicator" onclick="alert('提示标题|提示内容')">
+                  <label><![CDATA[提示框(带标题)]]></label>
+              </item>
+              <item accessory="indicator" onclick="testConfirm()">
+                  <label>确认框</label>
+              </item>
+              <item accessory="indicator" onclick="testConfirm2()">
+                  <label><![CDATA[确认框(带标题)]]></label>
+              </item>
+              <item accessory="indicator" onclick="hint('提示信息')">
+                  <label>提示信息</label>
+              </item>
+              <item accessory="indicator" onclick="log('记录日志信息')">
+                  <label>记录日志</label>
+              </item>
+              <item accessory="indicator" onclick="exit();">
+                  <label>退出应用</label>
+              </item>
+           </list>
+       </content>
+   </page>
+</imag>
